@@ -1,0 +1,30 @@
+<div>
+    <h2>Reclamos</h2>
+    <hr>
+    <a class="btn btn-primary" href="/main/add-reclamo">Registrar</a>
+</div>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Fecha de solución</th>
+            <th>Cliente (código)</th>
+            <th>Producto (codigo)</th>
+            <th>Opcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reclamo of listReclamos">
+            <td>{{ reclamo.codigo }}</td>
+            <td>{{ reclamo.parsedFecha() }}</td>
+            <td>{{ reclamo.estado }}</td>
+            <td>{{ reclamo.fechaSolucion }}</td>
+            <td>{{ reclamo.cliente.codigo }}</td>
+            <td>{{ reclamo.producto.codigo }}</td>
+            <td><button class="btn btn-primary"><i class="fas fa-file-invoice"></i> Detalles</button></td>
+        </tr>
+    </tbody>
+</table>

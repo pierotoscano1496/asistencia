@@ -1,0 +1,9 @@
+<div class="d-flex" id="wrapper">
+    <app-sidebar [isShown]="sidebarState"></app-sidebar>
+    <div id="page-content-wrapper">
+        <app-navbar (sendSidebarState)="setSidebarState($event)"></app-navbar>
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

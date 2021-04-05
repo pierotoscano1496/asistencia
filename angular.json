@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "asistencia"
+  "defaultProject": "asistencia",
+  "cli": {
+    "analytics": false
+  }
 }

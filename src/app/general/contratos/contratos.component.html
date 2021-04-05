@@ -1,0 +1,26 @@
+<div>
+    <h2>Contratos</h2>
+    <hr>
+    <a class="btn btn-primary" href="/main/add-contrato">Agregar</a>
+</div>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>Fecha</th>
+            <th>Cliente (código)</th>
+            <th>Producto (codigo)</th>
+            <th>Opcion</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="listContratos.length > 0">
+        <tr *ngFor="let contrato of listContratos">
+            <td>{{ contrato.numero }}</td>
+            <td>{{ contrato.parsedFecha() }}</td>
+            <td>{{ contrato.cliente.codigo }}</td>
+            <td>{{ contrato.producto.codigo }}</td>
+            <td><a class="btn btn-primary" href="/main/contratos/{{ contrato.id }}">Ver detalles</a></td>
+        </tr>
+    </tbody>
+</table>

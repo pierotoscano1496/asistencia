@@ -1,0 +1,63 @@
+<h2>Registro de contrato</h2>
+<hr>
+<form action="" method="post" [formGroup]="formAddContrato" (ngSubmit)="addContrato()">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="numero">N*:</label>
+            <input type="text" class="form-control" formControlName="numero" id="numero"
+                placeholder="Número de contrato" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="fecha">Fecha:</label>
+            <input type="date" class="form-control" formControlName="fecha" id="fecha" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="codProducto">Codigo de producto:</label>
+            <input #codProducto type="text" class="form-control" id="codProducto" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="producto">Nombre de producto:</label>
+            <select class="custom-select" formControlName="producto" id="producto" aria-label="Default select" required>
+                <option selected>-- Seleccione --</option>
+                <option *ngFor="let producto of listProductosToSearch" value="{{producto.id}}">{{producto.nombre}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Código de cliente:</label>
+            <input #codCliente type="text" class="form-control" id="codCliente" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="cliente">Cliente:</label>
+            <select class="custom-select" formControlName="cliente" id="cliente" aria-label="Default select">
+                <option selected>--Seleccione--</option>
+                <option *ngFor="let cliente of listClientesToSearch" value="{{cliente.id}}">{{cliente.codigo}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="descripcion">Descripción:</label>
+            <textarea class="form-control" formControlName="descripcion" id="descripcion" cols="30" rows="10"
+                maxlength="200" required></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </div>
+</form>
+<ng-template #messageBoxFormState let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Mensaje</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss();finishRegistration();">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>{{ (state? "Éxito al registrar" : "Error durante registro") }}</p>
+    </div>
+</ng-template>

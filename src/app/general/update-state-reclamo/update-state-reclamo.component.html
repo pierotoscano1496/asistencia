@@ -1,0 +1,32 @@
+<h2>Reclamo N° {{ reclamo?.codigo }}</h2>
+<div class="container" *ngIf="reclamo">
+    <div class="row">
+        <div class="col-md-6">
+            <label>Motivo:&nbsp;</label>
+            <input type="text" id="motivo" disabled
+                value="{{ $any(motivos | findByField:'tipo':reclamo.motivo).descripcion }}" />
+        </div>
+        <div class="col-sm-6">
+            <label for="estado">Estado actual:&nbsp;</label>
+            <span>{{ $any(estados | findByField:'tipo':reclamo.estado).descripcion }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-primary" [disabled]="reclamo.estado == 3"
+            (click)="updateStateReclamo()">Actualizar estado</button>
+    </div>
+    <div *ngIf="reclamo.estado == 3" class="row">
+        <span class="text-info">Este reclamo ya pasó por el proceso de atención.</span>
+    </div>
+</div>
+<ng-template #messageBoxFormState let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Mensaje</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss();finishUpdate();">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>{{ (state? "Éxito al registrar" : "Error durante registro") }}</p>
+    </div>
+</ng-template>

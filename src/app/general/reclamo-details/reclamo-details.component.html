@@ -1,0 +1,134 @@
+<h2>Detalles de reclamo: {{ reclamo?.codigo }}</h2>
+<hr>
+<div class="container-fluid" *ngIf="reclamo">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5>Motivo:&nbsp;</h5>
+                </div>
+                <div class="col-sm-8">
+                    <span>{{ (motivos | findByField:'tipo':reclamo.motivo).descripcion }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5>Fecha:&nbsp;</h5>
+                </div>
+                <div class="col-sm-8">
+                    <span>{{ reclamo.parsedFecha() }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Descripción:</h5>
+        </div>
+        <div class="col-md-8">
+            <p>{{ reclamo.descripcion }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5>Estado:&nbsp;</h5>
+                </div>
+                <div class="col-sm-8">
+                    <span>{{ (estados| findByField:'tipo':reclamo.estado).descripcion }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col" *ngIf="reclamo.estado == 3">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5>Fecha de solución:&nbsp;</h5>
+                </div>
+                <div class="col-sm-8">
+                    <span>{{ reclamo.parsedFechaSolucion() }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="reclamo.estado == 3">
+        <div class="col-md-4">
+            <h5>Descripción de la solución:</h5>
+        </div>
+        <div class="col-md-8">
+            <p>{{ reclamo.descripcionSolucion }}</p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col md-10">
+            <h4>Datos del cliente</h4>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Documento:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ reclamo.cliente.documento }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Código:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ reclamo.cliente.codigo }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Nombres:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ reclamo.cliente.nombres }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Apellidos:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ reclamo.cliente.apellidos }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-10">
+            <h4>Datos del producto:</h4>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Codigo:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ reclamo.producto.codigo }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Nombre:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ reclamo.producto.nombre }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Tecnología:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ reclamo.producto.tecnologia }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

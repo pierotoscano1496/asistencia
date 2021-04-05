@@ -1,0 +1,90 @@
+<h2>Detalles de contrato: {{ contrato?.numero }}</h2>
+<hr>
+<div class="container-fluid" *ngIf="contrato">
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Fecha:</h5>
+        </div>
+        <div class="col-md-8">
+            <span>{{ contrato.parsedFecha() }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Descripción:</h5>
+        </div>
+        <div class="col-md-8">
+            <p>{{ contrato.descripcion }}</p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col md-10">
+            <h4>Datos del cliente</h4>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Documento:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ contrato.cliente.documento }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Código:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ contrato.cliente.codigo }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Nombres:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ contrato.cliente.nombres }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Apellidos:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ contrato.cliente.apellidos }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-10">
+            <h4>Datos del producto:</h4>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Codigo:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ contrato.producto.codigo }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Nombre:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ contrato.producto.nombre }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Tecnología:</h5>
+                </div>
+                <div class="col-md-8">
+                    <span>{{ contrato.producto.tecnologia }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
